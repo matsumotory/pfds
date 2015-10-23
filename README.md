@@ -1,4 +1,4 @@
-# pfds
+# pfds  [![Build Status](https://travis-ci.org/matsumoto-r/pfds.svg?branch=master)](https://travis-ci.org/matsumoto-r/pfds)
 
 pfds - report a snapshot of the current processes fd
 
