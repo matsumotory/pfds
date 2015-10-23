@@ -1,4 +1,5 @@
 def __main__(argv)
+  exit if argv.size == 1
   if argv[1] == "version"
     puts "v#{Pfds::VERSION}"
   else
