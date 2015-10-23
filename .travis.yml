@@ -12,5 +12,5 @@ addons:
     packages:
       - gperf
 
-script: "rake all test"
+script: "rake"
 
