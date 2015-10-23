@@ -36,7 +36,7 @@ $ sudo pfds `pgrep nginx` `pgrep httpd` | sort -nk2 | tail
    13964  0.0  0.3 matsumoto_r /usr/local/apache-2.4.16/htdocs/blog/wp-content/plugins/codecolorer/codecolorer.css
    13964  0.0  0.3 matsumoto_r /usr/local/apache-2.4.16/htdocs/blog/wp-content/plugins/oembed-instagram/oembed-instagram.js
    13964  0.0  0.3 matsumoto_r /usr/local/apache-2.4.16/htdocs/blog/wp-content/plugins/shadowbox-js/css/extras.css
-   19940  0.0  0.3 daemon /usr/local/apache-2.4.16/htdocs/blog/wp-content/plugins/wp-social-bookmarking-light/images/hatena.gif
+   19940  0.0  0.3 matsumoto_r /usr/local/apache-2.4.16/htdocs/blog/wp-content/plugins/wp-social-bookmarking-light/images/hatena.gif
    29391 24.5  2.4 matsumoto_r /usr/local/apache-2.4.16/htdocs/blog/index.php
    29395 29.7  3.0 matsumoto_r /usr/local/apache-2.4.16/htdocs/blog/index.php
 ```
