@@ -9,24 +9,29 @@ pfds is one-binary. It's simple and powerful.
 - short version
 
 ```
-$ sudo pfds short `pgrep nginx` | head
+$ sudo pfds short `pgrep nginx` `pgrep httpd` | head
+   19942 daemon /usr/local/nginx-1.9.5/logs/error.log
+   19942 daemon /usr/local/nginx-1.9.5/logs/access.log
+   19942 daemon /usr/local/nginx-1.9.5/logs/deflate.log
    19939 daemon /usr/local/nginx-1.9.5/logs/error.log
    19939 daemon /usr/local/nginx-1.9.5/logs/access.log
    19939 daemon /usr/local/nginx-1.9.5/logs/deflate.log
    19940 daemon /usr/local/nginx-1.9.5/logs/error.log
-   19940 daemon /usr/local/apache-2.4.16/htdocs/blog/wp-content/plugins/wp-social-bookmarking-light/images/hatena.gif
-   19940 daemon /usr/local/nginx-1.9.5/logs/access.log
+   19940 matsumoto_r /usr/local/apache-2.4.16/htdocs/moblog/wp-content/uploads/2012/12/20121229-180225.jpg
+   19940 matsumoto_r /usr/local/apache-2.4.16/htdocs/moblog/wp-content/uploads/2012/12/20121224-202408.jpg
 ```
 
 - output with cpu and memory usage
 
 ```
-$ sudo pfds `pgrep nginx` | head
+$ sudo pfds `pgrep nginx` `pgrep httpd` | sort -nk2 | tail
    19939  0.0  0.1 daemon /usr/local/nginx-1.9.5/logs/error.log
    19939  0.0  0.1 daemon /usr/local/nginx-1.9.5/logs/access.log
    19939  0.0  0.1 daemon /usr/local/nginx-1.9.5/logs/deflate.log
    19940  0.0  0.3 daemon /usr/local/nginx-1.9.5/logs/error.log
    19940  0.0  0.3 daemon /usr/local/apache-2.4.16/htdocs/blog/wp-content/plugins/wp-social-bookmarking-light/images/hatena.gif
+   29391 24.5  2.4 matsumoto_r /usr/local/apache-2.4.16/htdocs/blog/index.php
+   29395 29.7  3.0 matsumoto_r /usr/local/apache-2.4.16/htdocs/blog/index.php
 ```
 
 ## build
