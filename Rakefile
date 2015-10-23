@@ -59,6 +59,11 @@ desc "run all tests"
 Rake::Task['test'].clear
 task :test => ["test:mtest", "test:bintest"]
 
+desc "install to /usr/local/bin/"
+task :install do
+  sh "sudo install -m 755 #{mruby_root}/bin/#{APP_NAME} /usr/local/bin"
+end
+
 desc "cleanup"
 task :clean do
   sh "rake deep_clean"

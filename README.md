@@ -65,6 +65,12 @@ end
 rake
 ```
 
+## install to `/usr/local/bin`
+
+```
+rake install
+```
+
 # License
 under the MIT License:
 
