@@ -2,6 +2,8 @@
 
 pfds - report a snapshot of the current processes fd
 
+pfds is one-binary. It's simple and powerful.
+
 ## usage
 
 - short version
