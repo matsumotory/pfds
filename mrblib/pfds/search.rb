@@ -43,7 +43,7 @@ module Pfds
             if @@top.nil?
               files << sprintf("% 8d %s %s", pid.to_i, username, realpath)
             else
-              files << sprintf("% 8d %4.1f %4.1f %s %s", pid.to_i, @@top[pid][7].to_f, @@top[pid][8].to_f, username, realpath)
+              files << sprintf("% 8d %5.1f %5.1f %s %s", pid.to_i, @@top[pid][7].to_f, @@top[pid][8].to_f, username, realpath)
             end
           end
         rescue
