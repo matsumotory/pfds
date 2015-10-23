@@ -2,7 +2,7 @@
 
 pfds - report a snapshot of the current processes fd
 
-pfds is one-binary. It's simple and powerful.
+pfds is one-binary and supports multi process. It's simple and powerful. 
 
 ## usage
 
@@ -32,6 +32,16 @@ $ sudo pfds `pgrep nginx` `pgrep httpd` | sort -nk2 | tail
    19940  0.0  0.3 daemon /usr/local/apache-2.4.16/htdocs/blog/wp-content/plugins/wp-social-bookmarking-light/images/hatena.gif
    29391 24.5  2.4 matsumoto_r /usr/local/apache-2.4.16/htdocs/blog/index.php
    29395 29.7  3.0 matsumoto_r /usr/local/apache-2.4.16/htdocs/blog/index.php
+```
+
+- Adjust multi process (default 4 process)
+
+```
+sudo MRUBY_MULTI=24 pfds `pgrep httpd` 
+```
+
+```
+sudo MRUBY_MULTI=1 pfds `pgrep httpd` 
 ```
 
 ## build
