@@ -62,6 +62,7 @@ task :test => ["test:mtest", "test:bintest"]
 desc "install to /usr/local/bin/"
 task :install do
   sh "sudo install -m 755 #{mruby_root}/bin/#{APP_NAME} /usr/local/bin"
+  sh "sudo install -m 644 #{APP_ROOT}/#{APP_NAME}.json /etc"
 end
 
 desc "cleanup"

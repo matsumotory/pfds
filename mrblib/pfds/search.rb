@@ -1,17 +1,20 @@
 module Pfds
 
+  @@config = {}
   @@gmutex = nil
   @@top = nil
 
   class << self
 
-    def file_ignore? path
-      (path == "" or Config::IGNORE_FILES.include? path) ? true : false
+    def file_ignore? path, ignore = []
+      ignore = @@config["ignore_files"] if ignore.empty? and @@config.key? "ignore_files"
+      (path == "" or ignore.include? path) ? true : false
     end
 
-    def pattern_ignore? path
+    def pattern_ignore? path, ignore = []
+      ignore = @@config["ignore_patterns"] if ignore.empty? and @@config.key? "ignore_patterns"
       is_next = false
-      Config::IGNORE_PATTERN.each do |pattern|
+      ignore.each do |pattern|
         if Regexp.new(pattern).match(path)
           is_next = true
           break
@@ -74,7 +77,20 @@ module Pfds
       pids[0] == "short"
     end
 
+    def load_config path
+      if File.exist?(path)
+        begin
+          @@config = JSON.parse(File.open(path).read())
+        rescue => e
+          STDERR.print "JSON parse error: #{path} #{e}\n"
+          exit false
+        end
+      end
+    end
+
     def run argv
+      self.load_config Config::CONFIG_PATH
+
       @@top = Top.new.run.data unless short? argv
       pids = (@@top.nil?) ? argv[1..-1] : argv
 

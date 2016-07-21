@@ -1,0 +1,15 @@
+{
+  "ignore_files": [
+    "/dev/null",
+    "/var/log/httpd/access_log",
+    "/var/log/httpd/error_log",
+    "/var/log/httpd/ssl_access_log",
+    "/var/log/httpd/ssl_error_log"
+  ],
+  "ignore_patterns": [
+    "^pipe:",
+    "^anon_inode:",
+    "^socket:",
+    "^/dev/pts/"
+  ]
+}

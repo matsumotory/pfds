@@ -3,23 +3,7 @@ module Pfds
 
     MULTI_PROCESS = (ENV["MRUBY_MULTI"] || 4).to_i
 
-    IGNORE_FILES = %w(
+    CONFIG_PATH = '/etc/pfds.json'
 
-    /dev/null
-    /var/log/httpd/access_log
-    /var/log/httpd/ssl_access_log
-    /var/log/httpd/error_log
-    /var/log/httpd/ssl_error_log
-
-    )
-
-    IGNORE_PATTERN = %w(
-
-    ^pipe:
-    ^anon_inode:
-    ^socket:
-    ^/dev/pts/
-
-    )
   end
 end

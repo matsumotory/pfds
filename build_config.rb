@@ -2,6 +2,7 @@ def gem_config(conf)
   conf.gembox 'full-core'
   conf.gem :mgem => 'mruby-dir'
   conf.gem :mgem => 'mruby-io'
+  conf.gem :mgem => 'mruby-iijson'
   conf.gem :mgem => 'mruby-process'
   conf.gem :mgem => 'mruby-env'
   conf.gem :mgem => 'mruby-mutex'
