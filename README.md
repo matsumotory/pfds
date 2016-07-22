@@ -8,7 +8,7 @@ pfds is one-binary and supports multi process. It's simple and powerful.
 
 - short version
 
-```
+```sh
 $ sudo pfds short `pgrep nginx` `pgrep httpd` | head
    13963 matsumoto_r /usr/local/apache-2.4.16/htdocs/blog/wp-includes/js/jquery/jquery-migrate.min.js
    13963 matsumoto_r /usr/local/apache-2.4.16/htdocs/blog/wp-includes/js/jquery/jquery.js
@@ -25,7 +25,7 @@ $ sudo pfds short `pgrep nginx` `pgrep httpd` | head
 
 - output with cpu and memory usage
 
-```
+```sh
 $ sudo pfds `pgrep nginx` `pgrep httpd` | sort -nk2 | tail
    13963  0.0  0.3 matsumoto_r /usr/local/apache-2.4.16/htdocs/blog/wp-includes/js/jquery/jquery-migrate.min.js
    13963  0.0  0.3 matsumoto_r /usr/local/apache-2.4.16/htdocs/blog/wp-includes/js/jquery/jquery.js
@@ -43,11 +43,11 @@ $ sudo pfds `pgrep nginx` `pgrep httpd` | sort -nk2 | tail
 
 - Adjust multi process (default 4 process)
 
-```
+```sh
 sudo MRUBY_MULTI=24 pfds `pgrep httpd` 
 ```
 
-```
+```sh
 sudo MRUBY_MULTI=1 pfds `pgrep httpd` 
 ```
 
@@ -61,38 +61,44 @@ module Pfds
 
     MULTI_PROCESS = (ENV["MRUBY_MULTI"] || 4).to_i
 
-    IGNORE_FILES = %w(
+    CONFIG_PATH = '/etc/pfds.json'
 
-    /dev/null
-    /var/log/httpd/access_log
-    /var/log/httpd/ssl_access_log
-    /var/log/httpd/error_log
-    /var/log/httpd/ssl_error_log
-
-    )
-
-    IGNORE_PATTERN = %w(
-
-    ^pipe:
-    ^anon_inode:
-    ^socket:
-    ^/dev/pts/
-
-    )
   end
 end
 ```
 
 - build into `mruby/bin/pfds`
 
-```
+```sh
 rake
 ```
 
 ## install to `/usr/local/bin`
 
-```
+```sh
 rake install
+```
+
+* Also put configration file to `/etc/pfds.json`.
+
+## configure
+
+```sh
+{
+  "ignore_files": [
+    "/dev/null",
+    "/var/log/httpd/access_log",
+    "/var/log/httpd/error_log",
+    "/var/log/httpd/ssl_access_log",
+    "/var/log/httpd/ssl_error_log"
+  ],
+  "ignore_patterns": [
+    "^pipe:",
+    "^anon_inode:",
+    "^socket:",
+    "^/dev/pts/"
+  ]
+}
 ```
 
 # License
